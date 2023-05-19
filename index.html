@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .divider {
+            position: relative;
+        }
+        .linha {
+            background: red;
+            width: 2px;
+            height: 100px;
+            right: 0px;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <table style="table-layout: fixed;">
+        <tr>
+            <th>Company<div class="divider"><div class="linha"></div></div></th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste<div class="divider"><div class="linha"></div></div></td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma<div class="divider"><div class="linha"></div></div></td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td>Ernst Handel<div class="divider"><div class="linha"></div></div></td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+        <tr>
+            <td>Island Trading<div class="divider"><div class="linha"></div></div></td>
+            <td>Helen Bennett</td>
+            <td>UK</td>
+        </tr>
+        <tr>
+            <td>Laughing Bacchus Winecellars<div class="divider"><div class="linha"></div></div></td>
+            <td>Yoshi Tannamuri</td>
+            <td>Canada</td>
+        </tr>
+        <tr>
+            <td>Magazzini Alimentari Riuniti<div class="divider"><div class="linha"></div></div></td>
+            <td>Giovanni Rovelli</td>
+            <td>Italy</td>
+        </tr>
+    </table>
+    <script>
+        const table = document.getElementsByTagName("table")
+        const tds = document.querySelectorAll(".linha")
+        
+        tds.forEach(td => {
+            td.draggable = true
+            td.addEventListener("drag", (e) => {
+                const th = document.querySelector("th")
+                if(e.pageX > 0){
+                    th.style.width = e.pageX+"px"
+                }
+                // console.log(e.pageX);
+            })
+            // td.addEventListener("mousemove", (e) => {
+            //     console.log(e.pageX);
+            // })
+            td.addEventListener('dragstart', handleDragStart);
+            td.addEventListener('dragend', handleDragEnd);
+        })
+
+        function handleDragStart(e){
+            console.log(e.pageX);
+            console.log(this.offsetWidth)
+        }
+        function handleDragEnd(e){
+
+            // console.log(e.pageX);
+            // this.offsetWidth = e.pageX
+            // console.log(e.pageX - this.getBoundingClientRect().left);
+            // this.classList.add(e.pageX)
+        }
+        console.log(tds);
+        console.log(table.offsetLef);
+
+    </script>
+</body>
+
+</html>
